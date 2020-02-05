@@ -18,7 +18,12 @@ class MP3Importer
     trimmed_list
   end
   
-  
+  def import
+    # uses Song.new_by_filename
+    files.each do |file|
+      Song.new_by_filename(file)
+    end
+  end
   
   
 end
