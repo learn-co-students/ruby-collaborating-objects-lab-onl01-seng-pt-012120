@@ -1,4 +1,3 @@
-require 'pry'
 class Song
   attr_accessor :name, :artist
   
@@ -22,6 +21,7 @@ class Song
     artist_name, song_name = filename.chomp(".mp3").split(" - ")
     song = self.new(song_name)
     song.artist = Artist.find_or_create_by_name(artist_name)
+    song.artist.add_song(song)
     song.save
     song
   end
