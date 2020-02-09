@@ -34,7 +34,7 @@ class Artist
   end
   
   def self.create_by_name(name)
-    self.new(name).save
+    self.new(name)
   end
   
   def print_songs
