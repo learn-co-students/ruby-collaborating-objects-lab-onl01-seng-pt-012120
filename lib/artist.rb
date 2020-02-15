@@ -9,16 +9,16 @@ class Artist
     @@all << self
   end 
   
-  def self. all
-   @@all
+  def self.all
+    @@all
   end
   
-  def add_song
-  song.artist = self
+  def add_song(song)
+   song.artist = self
   end
   
-  def songs 
-    
+  def songs
+    Song.all.select {|song| song.artist == self}
   end
   
   def self.find_or_create_by_name
