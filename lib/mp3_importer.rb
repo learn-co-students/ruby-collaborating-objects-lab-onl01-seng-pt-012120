@@ -10,10 +10,10 @@ class MP3Importer
   end
   
   def files 
-   Dir.entries(self.path).select {|file| file.ends_with?(".mp3s")}
+   Dir.entries(self.path).select {|file| file.end_with?(".mp3")}
   end 
     
-  def import 
-  
+  def import(filename_list)
+    filename_list.each {|filenames| Song.new_by_filename(filename_list)}
   end
 end 
