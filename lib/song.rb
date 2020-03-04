@@ -1,29 +1,27 @@
-class Song
-  attr_accessor :name, :artist
+class Song 
 
-  @@all = []
+    attr_accessor :name, :artist, :songs 
 
-  def initialize(name)
-    @name = name
-    @@all << self
-  end
+    @@all = []
 
-  def self.all
-    @@all
-  end
+    def initialize(name = @name)
+     @name = name
+     @@all << self
+   end
 
-  def artist_name
-    artist.name if artist
-  end
+    def self.all
+     @@all
+   end
 
-  def self.new_by_filename(file)
-    name = file.gsub(".mp3","").split(" - ")
-    s = Song.new(name[1])
-    s.artist_name = name[0]
-    s
-  end  
+    def artist_name=(name)
+     guy = Artist.find_or_create_by_name(name)
+     guy.add_song(self)
+     guy
+   end
 
-  def artist_name=(name)
-    self.artist = Artist.find_or_create_by_name(name)
-  end
-end 
+    def self.new_by_filename(filename)
+     song = self.new(filename.split(" - ")[1])
+     song.artist_name = filename.split(" - ")[0]
+     song
+   end
+ end
