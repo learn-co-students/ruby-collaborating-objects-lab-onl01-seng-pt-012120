@@ -1,3 +1,5 @@
+require 'pry'
+
 describe 'Artist' do
 
   before(:example) {
@@ -9,6 +11,7 @@ describe 'Artist' do
     it 'accepts a name for the artist' do
       artist = Artist.new('Michael Jackson')
       expect(artist.name).to eq('Michael Jackson')
+      #binding.pry
     end
   end
 
